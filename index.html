@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de sueldos</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="app">
+      <h1>Calculadora de sueldo por hora</h1>
+      <input
+        class="input"
+        type="number"
+        placeholder="Horas Mensuales"
+        onchange="atrapaHora(this.value)"
+        min="0"
+      />
+      <input
+        class="input"
+        type="number"
+        placeholder="Sueldo Mensual"
+        onchange="atrapaSueldo(this.value)"
+        min="0"
+      />
+      <button onclick="calculo()">resultado</button>
+
+      <div id="resultado" />
+    </div>
+
+    <!-- scripts -->
+    <script>
+      let horas = 0;
+      let sueldo = 0;
+      let resultado = 0;
+
+      const atrapaHora = (e) => {
+        horas = e;
+      };
+      const atrapaSueldo = (e) => {
+        sueldo = e;
+      };
+
+      const calculo = () => {
+        resultado = sueldo / horas;
+
+        let elemento = document.createElement("p");
+
+        let contenido = document.createTextNode(
+          `Si quieres ganar $ ${sueldo} trabajando ${horas} horas, debes cobrar $ ${resultado} por hora`
+        );
+
+        elemento.appendChild(contenido);
+
+        document.getElementById("resultado").appendChild(elemento);
+      };
+    </script>
+  </body>
+</html>
